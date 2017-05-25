@@ -1,5 +1,7 @@
 <style scoped>
 
+// .layout-menu-left { max-width: 10%; }
+
 .layout {
     border: 1px solid #d7dde4;
     background: #f5f7f9;
@@ -70,7 +72,7 @@
 
 <template>
 
-<div class="layout" :class="{'layout-hide-text': spanLeft < 5}">
+<div class="layout" :class="{'layout-hide-text': thinPanel}">
     <Row type="flex">
         <i-col :span="spanLeft" class="layout-menu-left">
             <Menu :active-name="setActive" theme="dark" width="auto" @on-select="routeTo">
@@ -88,18 +90,10 @@
                     <Icon type="navicon" :size="iconSize"></Icon>
                     <span class="layout-text">表格</span>
                 </Menu-item>
-                <Menu-item name="markdown-viewer">
-                    <Icon type="social-markdown" :size="iconSize"></Icon>
-                    <span class="layout-text">Markdown</span>
-                </Menu-item>
-                <Menu-item name="markdown-editor-1">
-                    <Icon type="edit" :size="iconSize"></Icon>
-                    <span class="layout-text">Md编辑器(1)</span>
-                </Menu-item>
-                <Menu-item name="markdown-editor-2">
-                    <Icon type="edit" :size="iconSize"></Icon>
-                    <span class="layout-text">Md编辑器(2)</span>
-                </Menu-item>
+              <Menu-item name="table-site">
+                  <Icon type="navicon" :size="iconSize"></Icon>
+                  <span class="layout-text">表格 2</span>
+              </Menu-item>
                 <Menu-item name="rtf">
                     <Icon type="document-text" :size="iconSize"></Icon>
                     <span class="layout-text">富文本框</span>
@@ -149,9 +143,18 @@ export default {
 
     data() {
             return {
+                thinPanel: false,
                 spanLeft: 5,
                 spanRight: 19,
-                page: ['about','form','table','markdown-viewer', 'markdown-editor-1', 'markdown-editor-2','rtf','upload','echarts']
+                page: [
+                  'about',
+                  'form',
+                  'table',
+                  'table-site',
+                   'rtf',
+                   'upload',
+                   'echarts'
+                ]
             }
         },
         computed: {
@@ -164,10 +167,11 @@ export default {
         },
         methods: {
             toggleClick() {
-                    if (this.spanLeft === 5) {
+                    this.thinPanel = !this.thinPanel;
+                    if (this.thinPanel) {
                         this.spanLeft = 2;
-
                         this.spanRight = 22;
+                        // todo, set according to window width
                     } else {
                         this.spanLeft = 5;
                         this.spanRight = 19;

@@ -29,7 +29,7 @@
 
 <div class="wrapper">
 <h1>
-后台管理系统
+赵博士管理系统后台
 </h1>
     <div class="login">
         <i-form ref="formInline" :model="formInline" :rules="ruleInline">
@@ -43,6 +43,7 @@
                 <i-button type="success" @click.native="handleSubmit('formInline')" long>登录</i-button>
             </Form-item>
         </i-form>
+        <p>随便填一个密码登陆。</p>
     </div>
 </div>
 

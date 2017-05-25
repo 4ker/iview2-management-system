@@ -16,7 +16,7 @@
             return {
                 content: '',
                 editorOption: {
-
+                    placeholder: "请输入内容"
                 }
             }
         },

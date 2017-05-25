@@ -11,7 +11,8 @@ export default new Router({
         {
             path: '/about',
             component: resolve => require(['../components/common/index.vue'], resolve),
-            children: [{
+            children: [
+                {
                     path: '',
                     component: resolve => require(['../components/common/about.vue'], resolve)
                 },
@@ -38,13 +39,20 @@ export default new Router({
                 {
                     path: '/rtf',
                     component: resolve => require(['../components/page/rtf.vue'], resolve)
-                },{
+                },
+                {
                     path: '/upload',
                     component: resolve => require(['../components/page/upload.vue'], resolve)
-                },{
+                },
+                {
                     path: '/echarts',
                     component: resolve => require(['../components/page/echarts.vue'], resolve)
-                }
+                }/*,
+                {
+                path: '/table-site',
+                component: resolve => require(['../components/page/table-site.vue'], resolve)
+               }
+               */
             ]
         },
         {

@@ -143,12 +143,22 @@ export default {
             }
         },
         methods: {
-            handleSubmit(name) {
+                handleSubmit(name) {
+                  if(validateForm()) {
                     this.$Message.success('这是一条成功的提示');
+                  } else {
+                    this.$Message.warning('提交错误');
+                  }
+                    this.$Message.success('这是一条成功的提示');
+                  console.log("提交的数据："+JSON.stringify(this.formValidate)+"shit.........");
                 },
                 handleReset(name) {
-                    this.$Message.warning('这是一条警告的提示');
-                }
+                    this.$Message.warning('重置');
+                },
+                validateForm() {
+                    var data = this.formValidate;
+                    return true;
+                },
         }
 }
 
